@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Be My Valentine</title>
@@ -39,7 +39,7 @@
 <body>
 
     <h1>Karuna, will you be my Valentine? 💖</h1>
-    <h3>Don’t break my heart, noni.</h3>
+    <h3>Don’t dare to deny, noni.</h3>
 
     <img src="{{ url_for('static', filename='photo1.jpg') }}">
 
@@ -57,5 +57,201 @@
     </script>
 
 </body>
-</html>
+</html> -->
 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Be My Valentine</title>
+
+```
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #f8cdda, #f6a5c0);
+        overflow-x: hidden;
+    }
+
+    h1 {
+        color: #d63384;
+        margin-top: 30px;
+    }
+
+    h3 {
+        color: #5a3d4a;
+    }
+
+    /* Layout */
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        padding: 40px;
+        flex-wrap: wrap;
+    }
+
+    .side {
+        width: 220px;
+    }
+
+    .side p {
+        font-size: 18px;
+        color: #5a3d4a;
+        background: rgba(255,255,255,0.5);
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .side img {
+        width: 120px;
+        margin-top: 15px;
+    }
+
+    .photo img {
+        width: 320px;
+        border-radius: 20px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Buttons */
+    .buttons {
+        margin-top: 30px;
+        position: relative;
+        height: 80px;
+    }
+
+    button {
+        padding: 12px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 25px;
+        margin: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    .yes:hover {
+        transform: scale(1.1);
+    }
+
+    .no {
+        background: #6c757d;
+        color: white;
+        position: absolute;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        color: pink;
+        font-size: 24px;
+        animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-100vh);
+            opacity: 0;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .container {
+            flex-direction: column;
+        }
+        .side {
+            width: 80%;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+
+```
+<h1>Karuna, will you be my Valentine? 💖</h1>
+<h3>Don’t dare to deny, noni.</h3>
+
+<div class="container">
+
+    <!-- Left side -->
+    <div class="side">
+        <p>
+            Every moment with you feels like
+            my favorite part of the day.
+        </p>
+        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="cute">
+    </div>
+
+    <!-- Center photo -->
+    <div class="photo">
+        <img src="{{ url_for('static', filename='photo1.jpg') }}" alt="Us">
+    </div>
+
+    <!-- Right side -->
+    <div class="side">
+        <p>
+            You make my world softer,
+            brighter, and full of love.
+        </p>
+        <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="cute">
+    </div>
+
+</div>
+
+<div class="buttons">
+    <button class="yes" onclick="location.href='/yes'">Yes</button>
+    <button class="no" id="noBtn">No</button>
+</div>
+
+<!-- Scripts -->
+<script>
+    // Floating hearts
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💗";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (15 + Math.random() * 25) + "px";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    setInterval(createHeart, 400);
+
+    // Flying No button
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", () => {
+        noBtn.style.top = Math.random() * (window.innerHeight - 60) + "px";
+        noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    });
+
+    
+</script>
+```
+
+</body>
+</html>
