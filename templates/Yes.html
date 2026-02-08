@@ -1,28 +1,122 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>She said Yes!</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background: #ffe6f0;
-            padding-top: 80px;
+
+```
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #ffd6e7, #ffc2d1);
+        overflow-x: hidden;
+        padding-top: 60px;
+    }
+
+    h1 {
+        color: #d63384;
+        font-size: 40px;
+    }
+
+    .message {
+        font-size: 20px;
+        color: #5a3d4a;
+        max-width: 600px;
+        margin: 20px auto;
+        background: rgba(255,255,255,0.5);
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .photo img {
+        width: 260px;
+        border-radius: 20px;
+        margin-top: 25px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .gifs {
+        margin-top: 25px;
+    }
+
+    .gifs img {
+        width: 120px;
+        margin: 10px;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        color: pink;
+        font-size: 24px;
+        animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(0);
+            opacity: 1;
         }
-        h1 {
-            color: #d63384;
+        to {
+            transform: translateY(-100vh);
+            opacity: 0;
         }
-        img {
-            width: 250px;
-            margin-top: 20px;
-        }
-    </style>
+    }
+</style>
+```
+
 </head>
 <body>
 
-    <h1>Thanks for accepting my proposal, bae 💕</h1>
+```
+<h1>She said YES! 💖</h1>
 
-    <img src="{{ url_for('static', filename='photo2.jpg') }}">
+<div class="message">
+Thank you for saying yes, my Noni.
+You make my life brighter every single day.
+I can’t promise I’ll always keep you smiling, but I’ll always try.
+I promise to stand by you in every moment,
+to fight a little less… and probably still make you a little more angry each day.
+But only because I love you that much.
+
+
+So… how was the surprise?
+Impressed? 💕
+</div>
+
+<div class="photo">
+    <img src="{{ url_for('static', filename='photo2.jpg') }}" alt="Us">
+</div>
+
+<div class="gifs">
+    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+</div>
+
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💗";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (15 + Math.random() * 25) + "px";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    setInterval(createHeart, 400);
+</script>
+```
 
 </body>
 </html>
